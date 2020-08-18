@@ -3,12 +3,13 @@ package com.yp.learnkotlindemo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.util.TypedValue
-import android.view.Gravity
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.google.android.material.tabs.TabLayout
-import com.yp.learnkotlindemo.util.LoggerUtil
+import com.yp.learnkotlindemo.bean.UserBean
+import com.yp.learnkotlindemo.example.ControlFlow
+import com.yp.learnkotlindemo.example.InlineFunction
+import com.yp.learnkotlindemo.util.Logger
 import com.yp.learnkotlindemo.util.logg
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -45,15 +46,13 @@ class MainActivity : AppCompatActivity(), DetailCallback {
             Log.e(TAG, "msg --->> $msg")
         }
 
-        LoggerUtil.e(TAG, "哈哈")
+        Logger.e(TAG, "哈哈")
         logg.e(TAG, "呵呵")
         adapter.setSimpleCallback {
             onSuccessFun { code, msg ->
             }
 
             onErrorFun { code, msg ->
-
-
             }
         }
 
@@ -81,12 +80,17 @@ class MainActivity : AppCompatActivity(), DetailCallback {
 
 //        tvText = findViewById(R.id.tv_text)
 
-        tv_text?.let {
-            Log.e(TAG, "i --->> $45664")
-            it.setText("KOTLIN")
-            it.gravity = Gravity.CENTER
-            it.setTextColor(resources.getColor(R.color.colorAccent))
-            it.setTextSize( TypedValue.COMPLEX_UNIT_SP,41F)
+        var list = mutableListOf<UserBean>(UserBean("张三",10, "芙蓉区"),
+            UserBean("李四",15, "岳麓区"),UserBean("王五",23, "天心区"))
+
+        also {
+            with(InlineFunction){
+                inlineLet(it, tv_text)
+                inlineWith(list)
+                inlineRun(list)
+                inlineApply(list)
+                inlineAlso(list)
+            }
         }
 
         stringArray = resources.getStringArray(R.array.tab)
@@ -95,27 +99,20 @@ class MainActivity : AppCompatActivity(), DetailCallback {
             layoutTab.addTab(layoutTab.newTab())
         }
 
-        for (i in 0..5) {
-            Log.e(TAG, "i --->> $i")
-        }
-
-        for (i in 0 until 5) {
-            Log.e(TAG, "i --->> $i")
-        }
-
-        for (i in 6 downTo 5 step 3) {
-            Log.e(TAG, "i --->> $i")
-        }
-
         for ((index, value) in stringArray.withIndex()) {
-            val tabAt = layoutTab.getTabAt(index)
-            tabAt?.text = value
-        }
-        var arrayList = arrayOf(1, 2, "a", false, 3, "r", true)
-        for (i in arrayList) {
-            Log.e(TAG, "i --->> $i")
+            var newTab = layoutTab.getTabAt(index)
+            newTab?.text = value
         }
 
+        // for循环的使用
+        ControlFlow.forMethod()
+        ControlFlow.ifMethod(3)
+        WhileIterator.remove()
+
+
+
+
+        var arrayList = arrayOf(1, 2, "a", false, 3, "r", true)
         var iterator = arrayList.iterator()
         while (iterator.hasNext()) {
             Log.e(TAG, "iii --->> ${iterator.next()}")
@@ -131,23 +128,14 @@ class MainActivity : AppCompatActivity(), DetailCallback {
     }
 
     fun forEach_label(ints: List<Int>) {
-        Log.e(TAG, "iii --->> iii")
-        var i = 3
+
+        /**
+         * 循环遍历
+         */
         ints.forEach {
-//            //forEach中无法使用continue和break;
-////        if (it == 0) continue //编译错误
-////        if (it == 2) /*break //编译错误 */
-//            print(it)
             Log.e(TAG, "iii ---forEach >> $it")
         }
-       run outer@{
-            ints.forEach {
-                if (it > 3){
-                    LoggerUtil.e(TAG, it.toString())
-                    return@outer
-                }
-            }
-        }
+
         run outer@{
             ints.forEach {
                 if (it == 0) return@forEach //相当于在forEach函数中continue,实际上是从匿名函数返回
@@ -155,19 +143,15 @@ class MainActivity : AppCompatActivity(), DetailCallback {
                 Log.e(TAG, "iii --->> $it")
             }
         }
-
-//        }
-        if (i == 3) {
-//            Log.e(TAG, "iii --->> $it")
-            //每个函数的名字代表一个函数地址，所以函数自动成为标签
-            return@forEach_label //等同于return
-        }
     }
 
     override fun detail() {
         TODO("Not yet implemented")
     }
 
+    /**
+     *  :: 方法的引用
+     */
     fun main() {
         foo(3, this::methodFunction)
     }
@@ -180,4 +164,6 @@ class MainActivity : AppCompatActivity(), DetailCallback {
     fun foo(s: Int, body: (String) -> Unit) {
         body(((s + 12).toString()))
     }
+
+
 }

@@ -1,7 +1,5 @@
 package com.yp.learnkotlindemo
 
-class BaseBean : BaseDataBean() {
-
-
+open class BaseBean : BaseDataBean() {
 
 }
