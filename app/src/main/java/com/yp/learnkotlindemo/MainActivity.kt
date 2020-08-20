@@ -7,6 +7,7 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import com.google.android.material.tabs.TabLayout
 import com.yp.learnkotlindemo.bean.UserBean
+import com.yp.learnkotlindemo.desingmode.Singleton
 import com.yp.learnkotlindemo.example.ControlFlow
 import com.yp.learnkotlindemo.example.InlineFunction
 import com.yp.learnkotlindemo.util.Logger
@@ -92,6 +93,7 @@ class MainActivity : AppCompatActivity(), DetailCallback {
                 inlineAlso(list)
             }
         }
+        Singleton.doSomething()
 
         stringArray = resources.getStringArray(R.array.tab)
 

@@ -5,6 +5,7 @@ import android.util.Log
 /**
  * 控制流
  */
+// 用object 修饰的类为静态类，里面的方法和变量都为静态的。
 object ControlFlow {
 
     private val TAG = ControlFlow::class.java.simpleName
@@ -77,13 +78,13 @@ object ControlFlow {
     /**
      * while 用法
      */
-    fun whileMethod(){
+    fun whileMethod() {
 
         arrayList.add(1)
         var iterator = arrayList.iterator()
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             var next = iterator.next()
-            if (next == 1 ){
+            if (next == 1) {
                 iterator.remove()
             }
         }

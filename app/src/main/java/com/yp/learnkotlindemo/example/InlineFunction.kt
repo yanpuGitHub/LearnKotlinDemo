@@ -10,6 +10,7 @@ import com.yp.learnkotlindemo.R
 import com.yp.learnkotlindemo.bean.UserBean
 
 /**
+ *
  * 内联函数
  *
  * 函数名	    定义inline的结构	                                   函数体内使用的对象	   返回值	  是否是扩展函数	    适用的场景
@@ -28,6 +29,7 @@ import com.yp.learnkotlindemo.bean.UserBean
 
  *  also	fun T.also(block: (T) -> Unit): T { block(this); return this }	it指代当前对象	返回this	是	适用于let函数的任何场景，一般可用于多个扩展函数链式调用
  */
+// 用object 修饰的类为静态类，里面的方法和变量都为静态的。
 object InlineFunction {
     private val TAG = InlineFunction::class.java.simpleName
 
