@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">networkLib</string>
+
+    <string name="net_err_code">网络请求异常 %d</string>
+    <string name="net_err_connect">网络连接异常.</string>
+    <string name="net_err_null">网络请求异常，请稍后重试.\n错误信息：</string>
+    <string name="net_err_runtime">运行异常，请稍后重试.</string>
+    <string name="net_err_timeout">网络连接超时.</string>
+    <string name="net_err_unknowhost">无法连接主服务器,请检查网络后重试.</string>
+
+
+    <string name="empty"></string>
+    <string name="back">返回</string>
+    <string name="exit">退出</string>
+    <string name="cancel">取消</string>
+    <string name="failed">失败</string>
+    <string name="failed_opt">操作失败</string>
+    <string name="suss_opt">操作成功</string>
+    <string name="next">下一步</string>
+    <!--<string name="failed_get">未获取有效数据</string>-->
+    <string name="failed_file_create">文件创建失败</string>
+    <string name="invalid_data">无效数据</string>
+    <string name="feature_enable">功能已开启</string>
+    <string name="feature_disable">该功能未启用</string>
+    <string name="back_tips_exit">再次点击退出应用</string>
+    <string name="empty_list">暂无内容</string>
+    <string name="spacer">：</string>
+    <string name="less">一</string>
+    <string name="plus">十</string>
+
+    <string name="find_more_up">上划发现更多</string>
+    <string name="find_more_nore">暂无更多</string>
+    <string name="click_refressh">点击刷新</string>
+
+
+    <string name="logon_timeout">登录超时</string>
+
+    <string name="update_md5_diff">校验失败</string>
+    <string name="downloading">下载中....</string>
+</resources>

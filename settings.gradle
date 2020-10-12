@@ -1,2 +1,4 @@
+include ':basic'
+include ':net'
 include ':app'
 rootProject.name = "LearnKotlinDemo"

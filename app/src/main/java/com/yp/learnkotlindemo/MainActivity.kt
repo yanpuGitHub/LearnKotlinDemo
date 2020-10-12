@@ -1,5 +1,6 @@
 package com.yp.learnkotlindemo
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,7 +13,6 @@ import com.yp.learnkotlindemo.example.ControlFlow
 import com.yp.learnkotlindemo.example.InlineFunction
 import com.yp.learnkotlindemo.util.Logger
 import com.yp.learnkotlindemo.util.logg
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), DetailCallback {
 
@@ -78,15 +78,24 @@ class MainActivity : AppCompatActivity(), DetailCallback {
 
         layoutTab = findViewById(R.id.layout_table)
         layoutFrame = findViewById(R.id.layout_contain)
+        tvText = findViewById(R.id.tv_text)
+
+        tvText.setOnClickListener {
+            startActivity(Intent(this, VLayoutActivity::class.java))
+        }
 
 //        tvText = findViewById(R.id.tv_text)
 
         var list = mutableListOf<UserBean>(UserBean("张三",10, "芙蓉区"),
             UserBean("李四",15, "岳麓区"),UserBean("王五",23, "天心区"))
 
+        var d = DerivedImpl(20)
+        Derived(d).print()
+        Derived(d).printMessage()
+
         also {
             with(InlineFunction){
-                inlineLet(it, tv_text)
+                inlineLet(it, tvText)
                 inlineWith(list)
                 inlineRun(list)
                 inlineApply(list)
